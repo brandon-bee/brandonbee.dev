@@ -72,3 +72,27 @@
   color: #555;
   margin-bottom: 10px;
 }
+
+@media screen and (max-width: 480px) {
+  .About {
+    flex-direction: column;
+    text-align: center;
+    margin-top: 50px;
+  }
+
+  .About-left {
+    width: 100%;
+  }
+
+  .About-card {
+    height: 30vh;
+  }
+
+  .About-card.bg, .About-award {
+    display: none;
+  }
+
+  .About-right {
+    padding: 20px;
+  }
+}
