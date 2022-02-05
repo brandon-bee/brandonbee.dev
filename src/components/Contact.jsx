@@ -1,11 +1,12 @@
 import React, { useRef, useState } from "react";
+import { connect } from "react-redux";
 import "../styles/Contact.css";
 import Phone from "../assets/phone.png";
 import Email from "../assets/email.png";
 import Address from "../assets/address.png";
 import emailjs from "emailjs-com";
 
-const Contact = () => {
+const Contact = ({ darkMode }) => {
   const formRef = useRef();
   const [done, setDone] = useState(false);
 
@@ -45,10 +46,38 @@ const Contact = () => {
             <b>What's your story?</b> Get in touch. Always available for freelancing if the right project comes along.
           </p>
           <form ref={formRef} onSubmit={handleSubmit}>
-            <input type="text" placeholder="Name" name="user_name" />
-            <input type="text" placeholder="Subject" name="user_subject" />
-            <input type="text" placeholder="Email" name="user_email" />
-            <textarea rows="5" placeholder="Message" name="message" />
+            <input
+              style={{
+                backgroundColor: darkMode && "#333"
+              }}
+              type="text"
+              placeholder="Name"
+              name="user_name"
+            />
+            <input
+              style={{
+                backgroundColor: darkMode && "#333"
+              }}
+              type="text"
+              placeholder="Subject"
+              name="user_subject"
+            />
+            <input
+              style={{
+                backgroundColor: darkMode && "#333"
+              }}
+              type="text"
+              placeholder="Email"
+              name="user_email"
+            />
+            <textarea
+              style={{
+                backgroundColor: darkMode && "#333"
+              }}
+              rows="5"
+              placeholder="Message"
+              name="message"
+            />
             <button>Submit</button>
             {
               done && "Thank you for your inquiry"
@@ -60,4 +89,10 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+const MapStateToProps = (state) => {
+  return({
+    darkMode: state.darkMode
+  });
+};
+
+export default connect(MapStateToProps)(Contact);
